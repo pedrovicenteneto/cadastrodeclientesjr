@@ -1,0 +1,63 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+    <h5 class="text-center">Editar Cliente</h5><table class="table table-bordered table-striped table-responsive">
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="hidden" name="id" value="{{ usuario.id_usuario }}"> 
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ usuario.nome }}">
+        </div><br>
+        <div class="form-group">
+            <label for="documento">CPF/CNPJ:</label>
+            <input type="text" class="form-control" maxlength="14" id="documento" name="documento" value="{{ usuario.documento }}">
+        </div><br>
+        <div class="form-group">
+            <label for="titulo_eleitor">Título de Eleitor:</label>
+            <input type="text" class="form-control" maxlength="12" id="titulo_eleitor" name="titulo_eleitor" value="{{ usuario.titulo_eleitor }}">
+        </div><br>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" class="form-control" maxlength="11" id="telefone" name="telefone" value="{{ usuario.telefone }}">
+        </div><br>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ usuario.email }}">
+        </div><br>
+        <div class="form-group">
+            <label for="endereco">Endereço:</label>
+            <input type="text" class="form-control" id="endereco" name="endereco" value="{{ usuario.endereco }}">
+        </div><br>
+        <div class="form-group">
+            <label class="ml-2" for="estado_civil">Estado Civil:</label>
+            <select name="estado_civil"  class="mr-2" class="form-control" id="estado_civil">
+                <option value="Selecione" {% if usuario.estado_civil == "Selecione" %}selected{% endif %}>Selecione</option>
+                <option value="Solteiro(a)" {% if usuario.estado_civil == "Solteiro(a)" %}selected{% endif %}>Solteiro(a)</option>
+                <option value="Casado(a)" {% if usuario.estado_civil == "Casado(a)" %}selected{% endif %}>Casado(a)</option>
+                <option value="Divorciado(a)" {% if usuario.estado_civil == "Divorciado(a)" %}selected{% endif %}>Divorciado(a)</option>
+                <option value="Separado(a)" {% if usuario.estado_civil == "Separado(a)" %}selected{% endif %}>Separado(a)</option>
+                <option value="Viúvo(a)" {% if usuario.estado_civil == "Viúvo(a)" %}selected{% endif %}>Viúvo(a)</option>
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="tipo_servico">Tipo de Serviço:</label><br>
+            <input type="checkbox" name="tipo_servico1" value="Abertura de CNPJ" {% if usuario.tipo_servico == "Abertura de CNPJ" %}checked{% endif %}> Abertura de CNPJ
+            <input type="checkbox" name="tipo_servico2" value="Consulta de DAS" {% if usuario.tipo_servico == "Consulta de DAS" %}checked{% endif %}> Consulta de DAS
+            <input type="checkbox" name="tipo_servico3" value="Imposto de Renda" {% if usuario.tipo_servico == "Imposto de Renda" %}checked{% endif %}> Imposto de Renda<br>
+        </div><br>
+        <div class="form-group">
+            <label for="senha_gov">Senha Gov:</label>
+            <input type="text" class="form-control" id="senha_gov" name="senha_gov" value="{{ usuario.senha_gov }}">
+        </div><br>
+        <div class="form-group">
+            <label for="info_adicionais">Informações Adicionais:</label>
+            <textarea name="info_adicionais" class="form-control"maxlength="27"></textarea>
+        </div><br>
+        <div>
+        <!--<button type="submit" class="btn btn-primary">Salvar</button>-->
+        <button class="form-control-sm">Enviar</button>
+        </div>
+
+    </form>
+{% endblock %}

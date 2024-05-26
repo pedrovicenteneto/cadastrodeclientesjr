@@ -1,0 +1,40 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+    <div style="text-align: center;" class=""> <!--Eu tirei o container-->
+        <!--<h1>Clientes</h1>-->
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th style="display: none;">Id</th> 
+                <th>Nome</th>
+                <th>CPF/CNPJ</th>
+                <th>Título de Eleitor</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Endereço</th>
+                <th>Estado Civil</th>
+                <th>Tipo de Serviço</th>
+                <th>Senha Gov</th>
+                <th>Informações Adicionais</th>
+                <th>Ações</th> 
+            </tr>
+       
+    {% for usuario in usuarios %}
+            <tr>
+                <td style="display: none;">{{usuario.id_usuario}}</td> 
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.documento}}</td>
+                <td>{{usuario.titulo_eleitor}}</td>
+                <td>{{usuario.telefone}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.endereco}}</td>
+                <td>{{usuario.estado_civil}}</td>
+                <td>{{usuario.tipo_servico}}</td>
+                <td>{{usuario.senha_gov}}</td>
+                <td>{{usuario.info_adicionais}}</td>
+                <td><a href="{% url 'editar_cliente' usuario.id_usuario %}">Editar</a></td>
+            </tr>
+    {% endfor %}
+        </table>
+    {% endblock %}
+
+
